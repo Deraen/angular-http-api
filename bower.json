@@ -1,0 +1,17 @@
+{
+  "name": "angular-http-api",
+  "version": "0.0.1",
+  "authors": [
+    "Juho Teperi <juho.teperi@iki.fi>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.2.16"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.16",
+    "angular-ui-router": "~0.2.10",
+    "chai": "~1.9.1",
+    "mocha": "~1.18.2"
+  }
+}
