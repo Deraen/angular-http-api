@@ -4,7 +4,7 @@
 
 Provides a way to make http requests where endpoint urls are defined once per project.
 
-## Why not $resouce
+## Why not $resource
 
 - All APIs aren't RESTful
 
@@ -47,3 +47,6 @@ provides decorator which implements `resolveApi`-decorator. Examples dir contain
 - More documentation
 - Test UI-Router decorator automatically
 - resolveApi decorator presumes that user has `Api` named factory which defines the endpoints
+  - maybe endpoints should be defined using provider? like states etc.
+  - Though it would be nice to keep possibility to define multiple APIs
+    - `$apiRouterIntegrationThingie.registerEndpointFactoryName('Api');` ?
