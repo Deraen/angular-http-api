@@ -1,5 +1,7 @@
 # Angular-HTTP-Api
 
+[![Build Status](https://travis-ci.org/Deraen/angular-http-api.svg?branch=master)](https://travis-ci.org/Deraen/angular-http-api)
+
 Provides a way to make http requests where endpoint urls are defined once per project.
 
 ## Why not $resouce
