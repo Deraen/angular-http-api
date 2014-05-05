@@ -63,14 +63,23 @@ angular.module('angular-http-api.router', ['angular-http-api', 'ui.router'])
         // FIXME: Use might name Api differently
         return ['$stateParams', 'Api', function($stateParams, Api) {
           // this = state definition
-          var opts = {urlParams: {}};
+          var opts = {urlParams: {}, params: {}};
+
           var urlParamMap = v[1];
-          console.log(urlParamMap);
           angular.forEach(urlParamMap, function(v, k) {
             if (v.length >= 1 && v[0] === '@') {
               opts.urlParams[k] = $stateParams[v.substr(1)];
             } else {
               opts.urlParams[k] = v;
+            }
+          });
+
+          var queryParamMap = v[2];
+          angular.forEach(queryParamMap, function(v, k) {
+            if (v.length >= 1 && v[0] === '@') {
+              opts.params[k] = $stateParams[v.substr(1)];
+            } else {
+              opts.params[k] = v;
             }
           });
 

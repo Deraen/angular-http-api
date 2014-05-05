@@ -32,6 +32,19 @@ UI-Router also provides a way to preprocess state properties. `angular-http-api.
 provides decorator which implements `resolveApi`-decorator. Examples dir contains a [complete example](./example/resolve.js).
 
 ```JavaScript
+.state('users', {
+  url: '/users',
+  abstract: true,
+  ...
+})
+.state('users.list', {
+  url: '?start',
+  resolveApi: {
+    // [name of api call, url params, query params]
+    users: ['getUsers', null, {limit: 10, start: '@start'}],
+  },
+  ...
+})
 .state('users.detail', {
   url: '/:id',
   resolveApi: {
@@ -40,6 +53,10 @@ provides decorator which implements `resolveApi`-decorator. Examples dir contain
   controller: 'UserCtrl',
   template: '<h1>{{user.name}}, {{user.id}}',
 })
+.controller('UserCtrl', function($scope, user) {
+  // Result of http promise is found under data-property
+  $scope.user = user.data;
+});
 ```
 
 ## TODO
@@ -50,3 +67,4 @@ provides decorator which implements `resolveApi`-decorator. Examples dir contain
   - maybe endpoints should be defined using provider? like states etc.
   - Though it would be nice to keep possibility to define multiple APIs
     - `$apiRouterIntegrationThingie.registerEndpointFactoryName('Api');` ?
+- Functions as resoveApi map params: `users: ['getUsers', null, {start: function($stateParams) { return $stateParams.page * 10; }}]` ?
